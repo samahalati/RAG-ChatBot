@@ -1,6 +1,5 @@
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
-<<<<<<< HEAD
 from langchain_huggingface import HuggingFaceEndpoint,HuggingFaceEmbeddings
 from huggingface_hub import login
 from langchain.prompts import ChatPromptTemplate
