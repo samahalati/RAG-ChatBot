@@ -1,5 +1,6 @@
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
+<<<<<<< HEAD
 from langchain_huggingface import HuggingFaceEndpoint,HuggingFaceEmbeddings
 from huggingface_hub import login
 from langchain.prompts import ChatPromptTemplate
@@ -12,6 +13,15 @@ import chromadb  # Import Chroma
 from langchain_chroma import Chroma
 
 
+=======
+from langchain_huggingface import HuggingFaceEndpoint
+from huggingface_hub import login
+from langchain.prompts import ChatPromptTemplate
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.document_loaders import PyPDFLoader
+from PyPDF2 import PdfReader
+>>>>>>> a8192ed69f39b593bfb6fc0e2056852beb671433
 
 
 login('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', add_to_git_credential=True)
@@ -31,6 +41,7 @@ llm = HuggingFaceEndpoint(
 
 
 
+<<<<<<< HEAD
 #Make Loader:
 loader=PyPDFLoader('PDF/Prompt-Breeding.pdf')
 PDF = loader.load()
@@ -40,6 +51,27 @@ print(len(PDF))
 chunk_size =1500
 chunk_overlap = 150
 
+=======
+
+#Make Loader:
+loader=PyPDFLoader('PDF/Prompt-Breeding.pdf')
+PDF = loader.load()
+
+
+print(len(PDF))
+
+
+
+
+#Chunk-Splitting: Defining chunk size and chunk overlap
+chunk_size =15000
+chunk_overlap = 150
+
+
+
+
+
+>>>>>>> a8192ed69f39b593bfb6fc0e2056852beb671433
 #Using of RecursiveCharacterSplitter,CharacterSplitter:
 
 def extract_text_from_pdf(documents):
@@ -50,9 +82,17 @@ def extract_text_from_pdf(documents):
     return text
 
 
+<<<<<<< HEAD
 extracted_text = extract_text_from_pdf(PDF)
 
    
+=======
+
+extracted_text = extract_text_from_pdf(PDF)
+
+   
+
+>>>>>>> a8192ed69f39b593bfb6fc0e2056852beb671433
 r_splitter = RecursiveCharacterTextSplitter(
     chunk_size=chunk_size,
     chunk_overlap=chunk_overlap,
@@ -71,6 +111,7 @@ for i, chunk in enumerate(chunks[:]):
    print(f"Chunk {i+1}: {chunk}\n")
 
 
+<<<<<<< HEAD
 #Embeddings:
 from transformers import AutoTokenizer
 
@@ -95,6 +136,9 @@ vectordb = Chroma.from_texts(
 question = "tell about first order prompt generation"
 docs = vectordb.similarity_search(question,k=3)
 print(docs[0])
+=======
+
+>>>>>>> a8192ed69f39b593bfb6fc0e2056852beb671433
 
 
 #creating chat templates:
